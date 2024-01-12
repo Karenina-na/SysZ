@@ -25,6 +25,14 @@ func API(r *gin.Engine) {
 	txOperator.Use(interception.Interception(), interception.RootInterception())
 	{
 		// /v1/operator/get		获取服务器状态
-		txOperator.GET("/get", controller.GetStatusController)
+		txOperator.GET("/getAll", controller.GetStatusController)
+	}
+
+	// hello
+	txHello := r.Group("/v1/hello")
+	txHello.Use(interception.Interception())
+	{
+		// /v1/hello/hello		测试
+		txHello.GET("/", controller.HelloController)
 	}
 }

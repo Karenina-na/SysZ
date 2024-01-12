@@ -3,3 +3,4 @@ log/
 bin/
 db/
 /test.go
+*.exe
