@@ -18,7 +18,7 @@ func HelloController(c *gin.Context) {
 		})
 		return
 	}
-	err = tmpl.Execute(c.Writer, "如果你看到这条消息，说明你的gin框架已经成功运行了！")
+	err = tmpl.Execute(c.Writer, "如果你看到这条消息，说明你的网页服务器已经正常运行了")
 	if err != nil {
 		c.JSON(200, gin.H{
 			"code":    500,

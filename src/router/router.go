@@ -6,12 +6,25 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// api	路由
+// WebAPI
+//
+//	@Description: web api
+//	@param r	*gin.Engine
+func WebAPI(r *gin.Engine) {
+	// hello
+	txHello := r.Group("/test/hello")
+	txHello.Use(interception.Interception())
+	{
+		// /v1/hello/hello		测试
+		txHello.GET("/", controller.HelloController)
+	}
+}
+
+// API
 //
 //	@Description: api
 //	@param r	*gin.Engine
 func API(r *gin.Engine) {
-
 	// login
 	txLogin := r.Group("/v1/login")
 	txLogin.Use(interception.Interception())
@@ -26,13 +39,5 @@ func API(r *gin.Engine) {
 	{
 		// /v1/operator/get		获取服务器状态
 		txOperator.GET("/getAll", controller.GetStatusController)
-	}
-
-	// hello
-	txHello := r.Group("/v1/hello")
-	txHello.Use(interception.Interception())
-	{
-		// /v1/hello/hello		测试
-		txHello.GET("/", controller.HelloController)
 	}
 }

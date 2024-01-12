@@ -58,6 +58,8 @@ func main() {
 	r.Use(cors.Default())
 	r.Use(interception.Interception())
 
+	// 初始化路由模块
+	router.WebAPI(r)
 	router.API(r)
 
 	// 初始化服务模块
