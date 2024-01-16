@@ -11,5 +11,5 @@ root: #默认值均为root
   token-sign: themis-root #token签名
 
 server:
-  port: 8080 #服务端口
+  port: 8081 #服务端口
   listen-time: 3 #状态更新时间 单位秒
