@@ -13,6 +13,7 @@ export function LoginNetwork(account: string, password: string) {
             "password": password_enc
         }
     }
+    console.log(config);
     return service(config);
 }
 
