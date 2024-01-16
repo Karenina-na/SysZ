@@ -5,7 +5,8 @@ import {Base64} from 'js-base64';
 const globalStore = useGlobalStore();
 
 const service = axios.create({
-    baseURL: (process.env.VITE_NODE_MODE === 'production' ? process.env.VITE_SYSZ_URL + "" : "/api") + "/v1",
+    // baseURL: (process.env.NODE_ENV === 'production' ? process.env.VITE_SYSZ_URL : "/api") + "/v1",
+    baseURL: import.meta.env.VITE_SYSZ_URL + "/v1",
     timeout: 5000
 });
 

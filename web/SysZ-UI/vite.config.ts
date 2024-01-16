@@ -38,7 +38,7 @@ export default defineConfig(({mode}) => {
           target: env.VITE_SYSZ_URL,
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, '')
-        }
+        },
       }
     },
   }
