@@ -30,7 +30,7 @@ func API(r *gin.Engine) {
 	txLogin.Use(interception.Interception())
 	{
 		// /v1/login/login		登录
-		txLogin.POST("/", controller.RootController)
+		txLogin.POST("", controller.RootController)
 	}
 
 	// operator
