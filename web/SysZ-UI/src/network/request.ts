@@ -5,7 +5,7 @@ import {Base64} from 'js-base64';
 const globalStore = useGlobalStore();
 
 const service = axios.create({
-    baseURL: (process.env.VITE_NODE_MODE === 'production' ? process.env.VITE_THEMISE_URL + "" : "/api") + "/v1",
+    baseURL: (process.env.VITE_NODE_MODE === 'production' ? process.env.VITE_SYSZ_URL + "" : "/api") + "/v1",
     timeout: 5000
 });
 
@@ -14,12 +14,12 @@ service.interceptors.request.use(config => {
     const message = globalStore.getRootMessage();
     const username_enc = Base64.encode(message.username);
     const password_enc = Base64.encode(message.password);
-    config.headers = {
-        "Content-Type": "application/json",
-        "account": username_enc,
-        "password": password_enc,
-        "token": message.token
-    };
+
+    config.headers.set("Content-Type", "application/json")
+    config.headers.set("account", username_enc)
+    config.headers.set("password", password_enc)
+    config.headers.set("token", message.token)
+
     return config;
 }, error => {
     return Promise.reject(error);

@@ -43,23 +43,13 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, ref, watchEffect} from 'vue'
+import {ref} from 'vue'
 import {
-  ArrowDown,
-  ArrowRight,
   DArrowRight,
-  DeleteFilled,
   Document,
-  House,
-  LocationFilled,
-  Menu as IconMenu,
-  Monitor
+  House
 } from '@element-plus/icons-vue'
 import {useRouter} from 'vue-router'
-import {SetupServersStore} from '@/stores/SetupServersStore'
-
-let store = SetupServersStore()
-const Colonies = ref()
 
 const router = useRouter()
 let length = document.documentElement.clientHeight - 110
@@ -89,10 +79,6 @@ function choice_system(status: string) {
 }
 
 const systemStatus = ['SystemStatus', 'HostStatus', 'CpuStatus', 'MemStatus', 'DiskStatus', 'NetworkStatus', 'PoolStatus']
-
-//加载初始数据
-onMounted(() => {
-})
 
 </script>
 <style scoped>

@@ -23,16 +23,8 @@
 <script lang="ts" setup>
 import {InfoFilled, Setting, User} from '@element-plus/icons-vue'
 import ThemeButton from '@/components/ThemeButton.vue'
-import {SetupServersStore} from '@/stores/SetupServersStore'
 import TurtleIcon from '@/components/TurtleIcon.vue'
 import ProudIcon from '@/components/ProudIcon.vue'
-import {ref, watchEffect} from 'vue'
-
-let store = SetupServersStore()
-
-//监控命名空间变化
-watchEffect(() => {
-})
 
 let timer: any = null
 

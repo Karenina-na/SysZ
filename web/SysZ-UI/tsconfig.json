@@ -1,5 +1,21 @@
 {
-  "files": [],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "types": [
+      // <--- This is the important part   process
+      "node"
+    ]
+  },
   "references": [
     {
       "path": "./tsconfig.node.json"
