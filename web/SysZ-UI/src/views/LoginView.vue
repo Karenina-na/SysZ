@@ -1,7 +1,7 @@
 <template>
   <ThemeButton class="Login-ThemeButton"/>
   <div class="Login-box">
-    <h1 id="Login-project-name" class="Login-project-name">Themis</h1>
+    <h1 id="Login-project-name" class="Login-project-name">SysZ</h1>
     <h1 id="Login-sign-title" class="Login-sign-title">Sign in to your account</h1>
     <el-input ref="focus_account" v-model="account" :prefix-icon="User" clearable
               maxlength="20" placeholder="Please input your account"/>

@@ -29,67 +29,6 @@
           </el-menu-item>
         </el-sub-menu>
 
-        <!--namespace-->
-        <el-menu-item index="2" @click="getNamespaces()">
-          <el-icon :size="20">
-            <LocationFilled/>
-          </el-icon>
-          <template #title><span :class="{ 'workspace-first-level-title-close': isCollapse }"
-                                 class="workspace-first-level-title">namespace</span></template>
-        </el-menu-item>
-
-        <!--servers status-->
-        <el-sub-menu index="3">
-          <template #title>
-            <el-icon :size="20">
-              <Monitor/>
-            </el-icon>
-            <span :class="{ 'workspace-first-level-title-close': isCollapse }"
-                  class="workspace-first-level-title">servers status</span>
-          </template>
-
-          <!--colony status-->
-          <el-sub-menu v-for="(List, colonyName) of Colonies"
-                       :key="colonyName" :index="String(colonyName)">
-            <template #title>
-              <el-icon class="workspace-second-level-icon">
-                <ArrowDown :size="16"/>
-              </el-icon>
-              <span class="workspace-second-level-title">
-                                <span class="workspace-second-colonyName">{{ colonyName }}</span>
-                            </span>
-            </template>
-
-            <!--server status-->
-            <el-menu-item v-for="(serverName, s_index) of List"
-                          :key="s_index" :index="String(colonyName) + '-' + String(serverName)"
-                          @click="choice_server(colonyName, serverName)">
-              <el-icon class="workspace-third-icon">
-                <ArrowRight :size="14"/>
-              </el-icon>
-              <span class="workspace-third-servername">{{ serverName }}</span>
-            </el-menu-item>
-          </el-sub-menu>
-        </el-sub-menu>
-
-        <!--black list-->
-        <el-menu-item index="4" @click="getBlackList()">
-          <el-icon :size="20">
-            <DeleteFilled/>
-          </el-icon>
-          <template #title><span :class="{ 'workspace-first-level-title-close': isCollapse }"
-                                 class="workspace-first-level-title">blacklist</span></template>
-        </el-menu-item>
-
-        <!--operator status-->
-        <el-menu-item index="5" @click="getOperator()">
-          <el-icon :size="20">
-            <icon-menu/>
-          </el-icon>
-          <template #title><span :class="{ 'workspace-first-level-title-close': isCollapse }"
-                                 class="workspace-first-level-title">operator</span></template>
-        </el-menu-item>
-
         <!--document status-->
         <el-menu-item index="6" @click="getDocument()">
           <el-icon :size="20">
@@ -122,53 +61,14 @@ import {SetupServersStore} from '@/stores/SetupServersStore'
 let store = SetupServersStore()
 const Colonies = ref()
 
-//监控集群数据变化
-watchEffect(() => {
-  Colonies.value = store.GetColoniesAndInstancesNameList()
-})
-
 const router = useRouter()
 let length = document.documentElement.clientHeight - 110
 const isCollapse = ref(true)
-
-//获取命名空间
-function getNamespaces() {
-  router.push({
-    path: '/workspace/namespace',
-  })
-}
-
-//获取黑名单
-function getBlackList() {
-  router.push({
-    path: '/workspace/blacklist',
-  })
-}
-
-//操作页面
-function getOperator() {
-  router.push({
-    path: '/workspace/operator',
-  })
-}
 
 //文档页面
 function getDocument() {
   router.push({
     path: '/workspace/document',
-  })
-}
-
-//选择当前命名空间下的服务器
-function choice_server(colony: number, name: number) {
-  let namespace = store.GetNamespace();
-  router.push({
-    path: '/workspace/server',
-    query: {
-      namespace: namespace,
-      colony: colony,
-      name: name
-    }
   })
 }
 

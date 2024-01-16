@@ -1,11 +1,10 @@
 <template>
   <div class="workspace-head-background">
-    <span class="workspace-head-title" @click="fresh_data()">Themis</span>
+    <span class="workspace-head-title" @click="fresh_data()">SysZ</span>
     <div class="workspace-namespace-card">
       <div class="workspace-namespace-icon">
         <ProudIcon/>
       </div>
-      <NamespaceCard :namespace="namespaces"/>
       <div class="workspace-namespace-icon">
         <TurtleIcon/>
       </div>
@@ -24,18 +23,15 @@
 <script lang="ts" setup>
 import {InfoFilled, Setting, User} from '@element-plus/icons-vue'
 import ThemeButton from '@/components/ThemeButton.vue'
-import NamespaceCard from './NamespacePage/NamespaceCard.vue';
 import {SetupServersStore} from '@/stores/SetupServersStore'
 import TurtleIcon from '@/components/TurtleIcon.vue'
 import ProudIcon from '@/components/ProudIcon.vue'
 import {ref, watchEffect} from 'vue'
 
 let store = SetupServersStore()
-const namespaces = ref()
 
 //监控命名空间变化
 watchEffect(() => {
-  namespaces.value = store.GetNamespace()
 })
 
 let timer: any = null

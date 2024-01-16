@@ -27,26 +27,6 @@ const router = createRouter({
                     component: () => import('@/components/workspace/WorkspaceSystemStatus.vue'),
                 },
                 {
-                    path: 'namespace',
-                    name: 'namespace',
-                    component: () => import('@/components/workspace/WorkSpaceNamespace.vue')
-                },
-                {
-                    path: 'server',
-                    name: 'server',
-                    component: () => import('@/components/workspace/WorkspaceServer.vue')
-                },
-                {
-                    path: 'blacklist',
-                    name: 'blacklist',
-                    component: () => import('@/components/workspace/WorkspaceBlacklist.vue')
-                },
-                {
-                    path: 'operator',
-                    name: 'operator',
-                    component: () => import('@/components/workspace/WorkspaceOperator.vue')
-                },
-                {
                     path: 'document',
                     name: 'document',
                     component: () => import('@/components/workspace/WorkspaceDocument.vue')
